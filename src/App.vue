@@ -1,32 +1,72 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app style="-webkit-app-region: drag">
+
+    <Navigation />
+
+    <v-content class="background-color">
+      <v-container
+        class="scroll-y"
+        fluid
+      >
+        <router-view  :key="$route.path" />
+      </v-container>
+        <v-btn
+          v-scroll="onScroll"
+          bottom
+          color="red"
+          dark
+          fab
+          fixed
+          right
+          @click="toTop"
+          class="clickable"
+        >
+          <v-icon>mdi-chevron-up</v-icon>
+        </v-btn>
+    </v-content><v-content class="background-color">
+      <v-container
+        class="scroll-y"
+        fluid
+      >
+        <router-view  :key="$route.path" />
+      </v-container>
+        <v-btn
+          v-scroll="onScroll"
+          bottom
+          color="red"
+          dark
+          fab
+          fixed
+          right
+          @click="toTop"
+          class="clickable"
+        >
+          <v-icon>mdi-chevron-up</v-icon>
+        </v-btn>
+    </v-content>
+
+    
+  </v-app>
 </template>
 
+<script>
+
+import Navigation from './views/components/Navigation'
+export default {
+  name: 'App',
+
+  components: {
+   Navigation,
+  },
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+  .background-color{
+    background-color: #ededed;
+  }
 </style>
